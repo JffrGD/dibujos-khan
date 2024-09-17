@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos Canvas - Dibujos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        canvas {
+            border: 1px solid black;
+            margin-top: 20px;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Proyectos Canvas - Dibujos</h1>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <div class="controls">
+        <button onclick="drawSnowman()">Muñeco de Nieve que saluda</button>
+        <button onclick="drawSunnySnowDay()">Día Nevado Soleado</button>
+        <button onclick="drawDinner()">¿Qué hay para cenar?</button>
+        <button onclick="drawBunnyTeeth()">Dientes de Conejo</button>
+        <button onclick="drawCrazyFrog()">Rana Loca</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Limpiar el canvas
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // Dibujar Muñeco de Nieve que saluda
+        function drawSnowman() {
+            clearCanvas();
+            
+            // Base del muñeco de nieve
+            ctx.fillStyle = 'white';
+            ctx.fillRect(4, 296, 391, 100); // Base nieve
+            ctx.beginPath();
+            ctx.arc(200, 300, 75, 0, 2 * Math.PI); // Cuerpo
+            ctx.arc(200, 200, 50, 0, 2 * Math.PI); // Cuerpo mediano
+            ctx.arc(200, 120, 37.5, 0, 2 * Math.PI); // Cabeza
+            ctx.fill();
+
+            // Brazos
+            ctx.strokeStyle = 'black';
+            ctx.beginPath();
+            ctx.moveTo(160, 200);
+            ctx.lineTo(66, 95);
+            ctx.moveTo(240, 200);
+            ctx.lineTo(320, 90);
+            ctx.stroke();
+        }
+
+        // Dibujar Día Nevado Soleado
+        function drawSunnySnowDay() {
+            clearCanvas();
+            
+            // Fondo cielo
+            ctx.fillStyle = 'rgb(0, 230, 255)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Sol
+            ctx.fillStyle = 'rgb(251, 255, 0)';
+            ctx.beginPath();
+            ctx.arc(80, 64, 50, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Nieve en el suelo
+            ctx.fillStyle = 'rgb(0, 255, 4)';
+            ctx.fillRect(0, 300, canvas.width, 100);
+
+            // Muñeco de nieve
+            ctx.fillStyle = 'rgb(247, 244, 244)';
+            ctx.beginPath();
+            ctx.arc(200, 300, 75, 0, 2 * Math.PI); // Cuerpo
+            ctx.arc(200, 200, 50, 0, 2 * Math.PI); // Cuerpo mediano
+            ctx.arc(200, 120, 37.5, 0, 2 * Math.PI); // Cabeza
+            ctx.fill();
+        }
+
+        // Dibujar ¿Qué hay para cenar?
+        function drawDinner() {
+            clearCanvas();
+
+            // Fondo mesa de madera
+            ctx.fillStyle = 'rgb(186, 145, 20)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Plato
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(200, 200, 175, 0, 2 * Math.PI); // Plato exterior
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(200, 200, 150, 0, 2 * Math.PI); // Plato interior
+            ctx.fill();
+
+            // Pizza (ejemplo de cena)
+            ctx.fillStyle = 'rgb(255, 255, 102)'; // Base
+            ctx.beginPath();
+            ctx.moveTo(200, 200);
+            ctx.lineTo(300, 200);
+            ctx.lineTo(250, 290);
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillStyle = 'red'; // Tomate
+            ctx.beginPath();
+            ctx.arc(230, 230, 10, 0, 2 * Math.PI);
+            ctx.arc(270, 230, 10, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.fillStyle = 'green'; // Vegetales
+            ctx.beginPath();
+            ctx.arc(235, 220, 5, 0, 2 * Math.PI);
+            ctx.arc(265, 220, 5, 0, 2 * Math.PI);
+            ctx.fill();
+        }
+
+        // Dibujar Dientes de Conejo
+        function drawBunnyTeeth() {
+            clearCanvas();
+            
+            // Orejas
+            ctx.fillStyle = 'grey';
+            ctx.beginPath();
+            ctx.ellipse(150, 70, 30, 60, 0, 0, 2 * Math.PI); // Oreja izquierda
+            ctx.ellipse(240, 70, 30, 60, 0, 0, 2 * Math.PI); // Oreja derecha
+            ctx.fill();
+
+            // Cara
+            ctx.beginPath();
+            ctx.arc(200, 170, 75, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Ojos
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.arc(170, 150, 20, 0, 2 * Math.PI); // Ojo izquierdo
+            ctx.arc(230, 150, 20, 0, 2 * Math.PI); // Ojo derecho
+            ctx.fill();
+
+            // Boca
+            ctx.beginPath();
+            ctx.moveTo(150, 200);
+            ctx.lineTo(250, 200);
+            ctx.stroke();
+
+            // Dientes
+            ctx.strokeRect(185, 200, 15, 15); // Diente izquierdo
+            ctx.strokeRect(200, 200, 15, 15); // Diente derecho
+        }
+
+        // Dibujar Rana Loca
+        function drawCrazyFrog() {
+            clearCanvas();
+
+            const x = 200;
+            const y = 250;
+
+            // Cuerpo
+            ctx.fillStyle = 'rgb(30, 204, 91)';
+            ctx.beginPath();
+            ctx.ellipse(x, y, 100, 50, 0, 0, 2 * Math.PI);
+            ctx.fill();
+
+            // Ojos
+            ctx.fillStyle = 'white';
+            ctx.beginPath();
+            ctx.arc(x - 50, y - 50, 20, 0, 2 * Math.PI); // Ojo izquierdo
+            ctx.arc(x + 50, y - 50, 20, 0, 2 * Math.PI); // Ojo derecho
+            ctx.fill();
+
+            // Pupilas
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+            ctx.ellipse(x, y, 60, 42.5, 0, 0, 2 * Math.PI); // Boca
+            ctx.fill();
+
+            ctx.fillRect(x - 55, y - 55, 10, 10); // Pupila izquierda
+            ctx.fillRect(x + 45, y - 55, 10, 10); // Pupila derecha
+        }
+    </script>
+</body>
+</html>
